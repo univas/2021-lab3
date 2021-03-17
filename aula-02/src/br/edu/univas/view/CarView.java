@@ -1,5 +1,7 @@
 package br.edu.univas.view;
 
+import br.edu.univas.vo.Car;
+
 public class CarView {
 
 	public void printMenu() {
@@ -46,5 +48,29 @@ public class CarView {
 	
 	public void informModelYear() {
 		System.out.println("Digite o ano do modelo:");
+	}
+	
+	public void printCarInformation(Car car, int position) {
+		System.out.println("Carro:::" + position);
+		System.out.println(car.getModel());
+		System.out.println(car.getColor());
+		System.out.println(car.getFabricationYear());
+		System.out.println(car.getModelYear());
+	}
+	
+	public void editCarMessage() {
+		System.out.println("Escolha um carro:");
+	}
+	
+	public void editCarSuccessMessage() {
+		System.out.println("Carro editado com sucesso!");
+	}
+	
+	public void deleteCarMessage() {
+		System.out.println("Escolha um carro:");
+	}
+	
+	public void deleteCarSuccessMessage() {
+		System.out.println("Carro removido com sucesso!");
 	}
 }
