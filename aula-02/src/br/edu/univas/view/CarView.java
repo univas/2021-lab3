@@ -10,6 +10,8 @@ public class CarView {
 		System.out.println("2 - Listar Carro");
 		System.out.println("3 - Editar Carro");
 		System.out.println("4 - Remover Carro");
+		System.out.println("5 - Acelerar Carro");
+		System.out.println("6 - Frear Carro");
 		System.out.println("9 - Sair");
 	}
 	
@@ -27,6 +29,14 @@ public class CarView {
 	
 	public void printRemoveCar() {
 		System.out.println("***REMOVER CARRO***");
+	}
+	
+	public void printAcelerateCar() {
+		System.out.println("***ACELERAR CARRO***");
+	}
+	
+	public void printBrakeCar() {
+		System.out.println("***FREAR CARRO***");
 	}
 	
 	public void printWrongOption() {
@@ -56,9 +66,10 @@ public class CarView {
 		System.out.println(car.getColor());
 		System.out.println(car.getFabricationYear());
 		System.out.println(car.getModelYear());
+		System.out.println(car.getSpeed());
 	}
 	
-	public void editCarMessage() {
+	public void chooseCarMessage() {
 		System.out.println("Escolha um carro:");
 	}
 	

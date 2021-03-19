@@ -1,5 +1,6 @@
 package br.edu.univas.main;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import br.edu.univas.view.CarView;
@@ -8,9 +9,8 @@ import br.edu.univas.vo.Car;
 public class StartApp {
 
 	private static CarView view = new CarView();
-	private static Car[] cars = new Car[10];
+	private static ArrayList<Car> cars = new ArrayList<>();
 	private static Scanner scanner = new Scanner(System.in);
-	private static int position = 0;
 	
 	public static void main(String[] args) {		
 		int option = 0;
@@ -35,6 +35,14 @@ public class StartApp {
 				view.printRemoveCar();
 				deleteCar();
 				
+			} else if (option == 5) {
+				view.printAcelerateCar();
+				acelerateCar();
+				
+			} else if (option == 6) {
+				view.printBrakeCar();
+				brakeCar();
+				
 			} else if (option != 9) {
 				view.printWrongOption();
 			}
@@ -56,24 +64,22 @@ public class StartApp {
 		view.informFabricationYear();
 		car.setFabricationYear(readInteger());
 		
-		cars[position++] = car;
+		cars.add(car);
 	}
 	
 	private static void listCars() {
-		for (int i = 0; i < 10; i++) {
-			Car c1 = cars[i];
-			if (c1 != null) {					
-				view.printCarInformation(c1, (i + 1));
-			}
+		for (int i = 0; i < cars.size(); i++) {
+			Car c1 = cars.get(i);
+			view.printCarInformation(c1, (i + 1));
 		}
 	}
 	
 	private static void editCar() {
-		view.editCarMessage();
+		view.chooseCarMessage();
 		listCars();
 		
 		int carIndexSelected = readInteger() - 1;
-		Car car = cars[carIndexSelected];
+		Car car = cars.get(carIndexSelected);
 		view.informModel();
 		car.setModel(scanner.nextLine());
 		
@@ -87,7 +93,6 @@ public class StartApp {
 		car.setFabricationYear(readInteger());
 		
 		view.editCarSuccessMessage();
-		cars[carIndexSelected] = car;
 	}
 	
 	private static void deleteCar() {
@@ -95,8 +100,26 @@ public class StartApp {
 		listCars();
 		
 		int carIndexSelected = readInteger() - 1;
-		cars[carIndexSelected] = null;
+		cars.remove(carIndexSelected);
 		view.deleteCarSuccessMessage();
+	}
+	
+	private static void acelerateCar() {
+		view.chooseCarMessage();
+		listCars();
+		
+		int carIndexSelected = readInteger() - 1;
+		Car car = cars.get(carIndexSelected);
+		car.accelerate();
+	}
+	
+	private static void brakeCar() {
+		view.chooseCarMessage();
+		listCars();
+		
+		int carIndexSelected = readInteger() - 1;
+		Car car = cars.get(carIndexSelected);
+		car.brake();
 	}
 	
 	private static int readInteger() {
