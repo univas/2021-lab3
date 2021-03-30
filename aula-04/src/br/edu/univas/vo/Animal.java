@@ -23,4 +23,9 @@ public class Animal {
 		this.cor = cor;
 	}
 	
+	@Override
+	public String toString() {
+		return "Raça: " + this.raca + "\n" +
+			   "Cor: " + this.cor;
+	}
 }

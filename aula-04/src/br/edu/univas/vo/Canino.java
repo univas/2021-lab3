@@ -8,4 +8,10 @@ public class Canino extends Animal {
 		super.emiteSom();
 	}
 	
+	@Override
+	public String toString() {
+		return "Raça: " + this.getRaca() + "\n" +
+			   "Cor: " + this.getCor() + "\n" +
+				"Qualquer coisa!";
+	}
 }

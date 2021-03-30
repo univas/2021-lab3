@@ -18,12 +18,17 @@ public class StartApp {
 		cachorro.setRaca("Tomba lata");
 		cachorro.emiteSom();
 		
+		Animal qualquerAnimal = new Animal();
+		qualquerAnimal.setCor("Azul");
+		qualquerAnimal.setRaca("Arara Azul");
+		qualquerAnimal.emiteSom();
 		
-		Animal animal = new Animal();
-		animal.setCor("Azul");
-		animal.setRaca("Arara Azul");
-		animal.emiteSom();
-		
+		imprimeAnimal(qualquerAnimal);
+		imprimeAnimal(cachorro);
+		imprimeAnimal(gato);
 	}
 	
+	private static void imprimeAnimal(Animal animal) {
+		System.out.println(animal);
+	}
 }

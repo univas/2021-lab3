@@ -8,4 +8,9 @@ public class Cachorro extends Canino {
 		super.emiteSom();
 	}
 	
+	@Override
+	public String toString() {
+		return "Sou um cachorro da raça: " + this.getRaca() +
+			"\n e tenho a cor: " + this.getCor();
+	}
 }
