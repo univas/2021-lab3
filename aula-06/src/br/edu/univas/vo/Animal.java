@@ -9,4 +9,8 @@ public class Animal {
 		System.out.println("Qualquer som!");
 	}
 	
+	public void emiteSom(String som) {
+		System.out.println(som);
+	}
+	
 }

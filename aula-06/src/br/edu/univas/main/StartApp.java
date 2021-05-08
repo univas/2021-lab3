@@ -18,6 +18,7 @@ public class StartApp {
 	public static void main(String[] args) {
 		Animal animal1 = new Animal();
 		animal1.emiteSom();
+		animal1.emiteSom("som de um animal....");
 		//animal1.correrEmVoltaDeSiMesmo();
 		//animal1.arranhar();
 		
@@ -41,10 +42,10 @@ public class StartApp {
 		System.out.println("*****************");
 		animal2.emiteSom();
 		animal3.emiteSom();
-	
+		
 		if (animal3 instanceof Gato) {
-			Gato g1 = (Gato) animal3;
-			g1.arranhar();
+			Gato g12 = (Gato) animal3;
+			g12.arranhar();
 			
 		} else if (animal3 instanceof Cachorro) {
 			Cachorro c1 = (Cachorro) animal3;
