@@ -10,6 +10,10 @@ import br.edu.univas.vo.Vendedor;
 
 public class StartApp {
 
+	//TODO
+	//1 - Funcionario tem que ter nome
+	//2 - Adicionar um menu novo: Calcular salario
+
 	public static void main(String[] args) {
 		//jeito 1
 		StartApp app = new StartApp();
@@ -73,8 +77,12 @@ public class StartApp {
 	}
 	
 	private void listar(ArrayList<Funcionario> funcionarios) {
-		System.out.println("::::Cadastro de Funcionário::::");
-				
+		System.out.println("::::Listagem de Funcionário::::");
+
+		if (funcionarios.isEmpty()) {
+			System.out.println("Nenhum funcionario cadastrado ainda!");
+		}
+		
 		for (Funcionario funcionario : funcionarios) {
 			System.out.println(funcionario);
 		}
