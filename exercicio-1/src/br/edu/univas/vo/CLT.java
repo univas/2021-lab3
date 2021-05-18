@@ -2,8 +2,8 @@ package br.edu.univas.vo;
 
 public class CLT extends Funcionario {
 
-	public CLT(float salarioBase) {
-		super(salarioBase);
+	public CLT(float salarioBase, String nome) {
+		super(salarioBase, nome);
 	}
 
 	@Override
@@ -13,6 +13,6 @@ public class CLT extends Funcionario {
 
 	@Override
 	public String toString() {
-		return "[CLT salarioBase=" + getSalarioBase() + "]";
+		return "[CLT nome=" + getNome() + " salarioBase=" + getSalarioBase() + "]";
 	}
 }

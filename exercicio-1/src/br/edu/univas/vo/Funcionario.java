@@ -4,9 +4,11 @@ public abstract class Funcionario {
 
 	private float salarioBase;
 	private float horasTrabalhadas;
+	private String nome;
 	
-	public Funcionario(float salarioBase) {
+	public Funcionario(float salarioBase, String nome) {
 		this.salarioBase = salarioBase;
+		this.nome = nome;
 	}
 	
 	public abstract float calculaSalario();
@@ -25,5 +27,13 @@ public abstract class Funcionario {
 
 	public void setHorasTrabalhadas(float horasTrabalhadas) {
 		this.horasTrabalhadas = horasTrabalhadas;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 }

@@ -4,8 +4,8 @@ public class Vendedor extends Funcionario {
 
 	private float comissao;
 
-	public Vendedor(float salarioBase, float comissao) {
-		super(salarioBase);
+	public Vendedor(float salarioBase, float comissao, String nome) {
+		super(salarioBase, nome);
 		this.comissao = comissao;
 	}
 
@@ -24,6 +24,6 @@ public class Vendedor extends Funcionario {
 
 	@Override
 	public String toString() {
-		return "[Vendedor " + "salarioBase=" + getSalarioBase() + " comissao=" + comissao + "]";
+		return "[Vendedor nome=" + getNome() + " salarioBase=" + getSalarioBase() + " comissão=" + comissao + "]";
 	}
 }

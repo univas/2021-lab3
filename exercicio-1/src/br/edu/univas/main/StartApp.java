@@ -10,10 +10,6 @@ import br.edu.univas.vo.Vendedor;
 
 public class StartApp {
 
-	//TODO
-	//1 - Funcionario tem que ter nome
-	//2 - Adicionar um menu novo: Calcular salario
-
 	public static void main(String[] args) {
 		//jeito 1
 		StartApp app = new StartApp();
@@ -30,14 +26,17 @@ public class StartApp {
 		
 		do {
 			printMenu();
-			option = scanner.nextInt();
+			option = readInteger(scanner);
 			
 			if (option == 1) {
 				cadastrar(scanner, funcionarios);
 				
 			} else if (option == 2) {
-				listar(funcionarios);				
-				
+				listar(funcionarios);
+
+			} else if (option == 3) {
+				calculaSalario(funcionarios, scanner);
+
 			} else if (option != 9) {
 				System.out.println("Opção inválida!");
 				
@@ -52,26 +51,29 @@ public class StartApp {
 	
 	private void cadastrar(Scanner scanner, ArrayList<Funcionario> funcionarios) {
 		printSubMenu();
-		int option = scanner.nextInt();
+		int option = readInteger(scanner);
 		Funcionario funcionario = null;
-		
+
+		System.out.println("Digite o nome do funcionário:");
+		String nome = scanner.nextLine();
+
 		System.out.println("Digite o salario base:");
-		float salarioBase = scanner.nextFloat();
+		float salarioBase = readFloat(scanner);
 		
 		if (option == 1) {
-			funcionario = new CLT(salarioBase);
+			funcionario = new CLT(salarioBase, nome);
 			funcionarios.add(funcionario);
 			
 		} else if (option == 2) {
 			System.out.println("Digite o valor pago por hora:");
-			float valorHora = scanner.nextFloat();
-			funcionario = new Estagiario(salarioBase, valorHora);
+			float valorHora = readFloat(scanner);
+			funcionario = new Estagiario(salarioBase, valorHora, nome);
 			funcionarios.add(funcionario);
 			
 		} else if (option == 3) {
 			System.out.println("Digite o valor da comissão:");
-			float comissao = scanner.nextFloat();
-			funcionario = new Vendedor(salarioBase, comissao);
+			float comissao = readFloat(scanner);
+			funcionario = new Vendedor(salarioBase, comissao, nome);
 			funcionarios.add(funcionario);
 		}
 	}
@@ -88,13 +90,28 @@ public class StartApp {
 		}
 	}
 	
+	private void calculaSalario(ArrayList<Funcionario> funcionarios, Scanner scanner) {
+
+		for (Funcionario funcionario : funcionarios) {
+			System.out.println("Funcionário: " + funcionario.getNome());
+
+			if (funcionario instanceof Estagiario) {
+				System.out.println("Digite a quantidade de horas trabalhadas para o calculo do salário:");
+				funcionario.setHorasTrabalhadas(readFloat(scanner));
+			}
+
+			System.out.println("Salário calculado: " + funcionario.calculaSalario());
+		}
+	}
+
 	private void printMenu() {
 		System.out.println("::::Cadastro de Funcionário::::");
 		System.out.println("1 - Cadastrar Novo Funcionário");
 		System.out.println("2 - Listar todos os Funcionários");
+		System.out.println("3 - Calcular salário");
 		System.out.println("9 - Sair");
 	}
-	
+
 	private void printSubMenu() {
 		System.out.println("::::Cadastro de Funcionário::::");
 		System.out.println("1 - CLT");
@@ -103,4 +120,15 @@ public class StartApp {
 		System.out.println("9 - Voltar");
 	}
 
+	private int readInteger(Scanner scanner) {
+		int option = scanner.nextInt();
+		scanner.nextLine();
+		return option;
+	}
+
+	private float readFloat(Scanner scanner) {
+		float option = scanner.nextFloat();
+		scanner.nextLine();
+		return option;
+	}
 }

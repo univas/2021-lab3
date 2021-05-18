@@ -4,8 +4,8 @@ public class Estagiario extends Funcionario {
 
 	private float valorHora;
 
-	public Estagiario(float salarioBase, float valorHora) {
-		super(salarioBase);
+	public Estagiario(float salarioBase, float valorHora, String nome) {
+		super(salarioBase, nome);
 		this.valorHora = valorHora;
 	}
 
@@ -24,6 +24,6 @@ public class Estagiario extends Funcionario {
 
 	@Override
 	public String toString() {
-		return "[Estagiario " + "salarioBase=" + getSalarioBase() + " valorHora=" + valorHora + "]";
+		return "[Estagiario nome=" + getNome() + " salarioBase=" + getSalarioBase() + " valorHora=" + valorHora + "]";
 	}
 }
