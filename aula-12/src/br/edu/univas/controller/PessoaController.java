@@ -48,7 +48,7 @@ public class PessoaController {
 		System.out.println("Digite o estado da pessoa:");
 		String estado = scanner.nextLine();
 		
-		Estado qualEstado = Estado.SP;
+		//Estado qualEstado = Estado.SP;
 		
 		
 		if (estado.equals("Minas Gerais") || estado.equals("São Paulo") ||
