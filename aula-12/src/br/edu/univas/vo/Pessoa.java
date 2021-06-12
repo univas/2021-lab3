@@ -5,7 +5,7 @@ public class Pessoa {
 	private String nome;
 	private String telefone;
 	private String endereco;
-	private String estado;
+	private Estado estado;
 	
 	public String getNome() {
 		return nome;
@@ -25,10 +25,24 @@ public class Pessoa {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	public String getEstado() {
+	public Estado getEstado() {
 		return estado;
 	}
-	public void setEstado(String estado) {
+	public void setEstado(Estado estado) {
 		this.estado = estado;
+	}
+
+	@Override
+	public String toString() {
+		String result = "Pessoa [nome=" + nome + 
+				", telefone=" + telefone + 
+				", endereco=" + endereco;
+		
+		if (estado != null) {
+			result += ", estado=" + estado.getName() + "]";
+		} else {
+			result += ", estado=(não preenchido)]";
+		}
+		return result;
 	}
 }

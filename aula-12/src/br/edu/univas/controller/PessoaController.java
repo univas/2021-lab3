@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import br.edu.univas.dao.PessoaDAO;
 import br.edu.univas.vo.Estado;
+import br.edu.univas.vo.Pessoa;
 import br.edu.univas.vo.PessoaFisica;
 
 public class PessoaController {
@@ -22,8 +23,13 @@ public class PessoaController {
 			
 			if (option == 1) {
 				registerPF();
+			} else if (option == 2) {
+				System.out.println("\n\nNão faz nada por enquanto ...\n\n");
+			} else if (option == 3) {
+				listPF();
+			} else if (option == 4) {
+				System.out.println("\n\nNão faz nada por enquanto ...\n\n");
 			}
-			
 		} while (option != 9);
 		
 		System.out.println("Bye bye!");
@@ -47,16 +53,20 @@ public class PessoaController {
 		
 		System.out.println("Digite o estado da pessoa:");
 		String estado = scanner.nextLine();
-		
-		//Estado qualEstado = Estado.SP;
-		
-		
-		if (estado.equals("Minas Gerais") || estado.equals("São Paulo") ||
-			estado.equals("Rio de Janeiro") || estado.equals("Espírito Santo")) {
-			pessoa.setEstado(estado);
-		}
-		
+		pessoa.setEstado(Estado.valueFrom(estado));
+
 		pessoaDAO.save(pessoa);
+	}
+	
+	private void listPF() {
+		System.out.println(":::Lista de Pessoa Física Cadastrada:::");
+		
+		for (Pessoa pessoa : pessoaDAO.listAll()) {
+			if (pessoa instanceof PessoaFisica) {
+				PessoaFisica pf = (PessoaFisica) pessoa;
+				System.out.println(pf);
+			}
+		}
 	}
 	
 	private void printMenu() {
@@ -64,6 +74,7 @@ public class PessoaController {
 		System.out.println("2 - Cadastrar pessoa jurídica");
 		System.out.println("3 - Listar pessoa física");
 		System.out.println("4 - Listar pessoa jurídica");
+		System.out.println("9 - Sair");
 		System.out.println("Digite uma opção:");
 	}
 	

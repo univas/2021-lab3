@@ -13,4 +13,8 @@ public class PessoaDAO {
 		my_database.add(pessoa);
 	}
 	
+	public List<Pessoa> listAll() {
+		return my_database;
+	}
+	
 }
